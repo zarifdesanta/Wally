@@ -40,7 +40,7 @@ function Navbar() {
           <RWebShare
             data={{
               text: "Web share - Wally",
-              url: "http://wally.netlify.app",
+              url: "https://vangari.netlify.app/",
               title: "WALLY",
             }}
           >

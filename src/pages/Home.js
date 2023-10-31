@@ -73,11 +73,19 @@ function Home() {
           autoPlay={true}
           interval={3000}
         >
-          {imageListNew.map((item, key) => {
+          {/*imageListNew.map((item, key) => {
             return (
               <div>
                 <img className="img" src={item.url} />
                 <p className="label">{item.imageName.split("_")[0]}</p>
+              </div>
+            );
+          })*/}
+          {WallpaperList.map((item, key) => {
+            return (
+              <div>
+                <img className="img" src={item.image} />
+                <p className="label">{item.name}</p>
               </div>
             );
           })}
