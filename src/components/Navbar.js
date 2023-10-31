@@ -35,7 +35,7 @@ function Navbar() {
             fontFamily={"cursive"}
             sx={{ flexGrow: 1, color: "white", fontSize: 50 }}
           >
-            WALLY
+            VANGARI
           </Typography>
           <RWebShare
             data={{
