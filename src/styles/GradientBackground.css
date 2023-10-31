@@ -1,0 +1,39 @@
+.gradient_background {
+  background: linear-gradient(90deg, #0062ff, #da61ff);
+  height: 100vh;
+  width: 100vw;
+}
+
+.animated_gradient {
+  background: linear-gradient(90deg, #0062ff, #da61ff);
+  background-size: 400% 400%;
+  animation: gradient_anim 8s ease infinite;
+  height: 100%;
+  width: 100%;
+}
+
+.navbar_gradient {
+  background: linear-gradient(90deg, #0062ffa4, #da61ffa8);
+  height: 9.5%;
+  width: 20%;
+}
+
+.navbar_animated_gradient {
+  background: linear-gradient(90deg, #0062ffa2, #da61ff9f);
+  background-size: 100% 100%;
+  animation: gradient_anim 8s ease infinite;
+  height: 9.5%;
+  width: 20%;
+}
+
+@keyframes gradient_anim {
+  0% {
+    background-position: 50% 100%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 50% 100%;
+  }
+}

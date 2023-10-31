@@ -1,0 +1,29 @@
+.img {
+  border-radius: 30px;
+}
+
+.label {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  margin-left: -25%;
+  width: 50%;
+  border-radius: 15px;
+  background: #000000b9;
+  color: #ffffff;
+  padding: 10px;
+  font-size: 18px;
+  text-align: center;
+  opacity: 1;
+  font-family: monospace;
+  -webkit-transition: opacity 0.35s ease-in-out;
+  -moz-transition: opacity 0.35s ease-in-out;
+  -ms-transition: opacity 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
