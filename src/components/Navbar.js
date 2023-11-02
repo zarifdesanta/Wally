@@ -4,15 +4,26 @@ import {
   Container,
   Toolbar,
   Typography,
-  IconButton,
+  Box,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
 import "../styles/GradientBackground.css";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import { RWebShare } from "react-web-share";
+import MenuIcon from "@mui/icons-material/Menu";
+import ShareButton from "./ShareButton";
+import TextButton from "./TextButton";
 
 function Navbar() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <AppBar
       className="navbar_gradient"
@@ -37,42 +48,55 @@ function Navbar() {
           >
             VANGARI
           </Typography>
-          <RWebShare
-            data={{
-              text: "Web share - Wally",
-              url: "https://vangari.netlify.app/",
-              title: "WALLY",
-            }}
+          <Box display={{ xs: "block", ms: "none", md: "none" }}>
+            <Button
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+              variant="outlined"
+              sx={{ color: "white", borderRadius: 1, borderColor: "white" }}
+            >
+              <MenuIcon></MenuIcon>
+            </Button>
+          </Box>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            sx={{ borderRadius: 20 }}
           >
-            <Button
+            <MenuItem onClick={handleClose}>
+              <TextButton
+                link="https://zarfdev.netlify.app/"
+                btnName="ABOUT ME"
+                color="black"
+                variant="text"
+              ></TextButton>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <ShareButton
+                color="black"
+                variant="text"
+                iconColor="black"
+              ></ShareButton>
+            </MenuItem>
+          </Menu>
+          <Box display={{ xs: "none", ms: "block", md: "block" }}>
+            <ShareButton
+              marginRight={5}
+              color="white"
               variant="outlined"
-              sx={{
-                marginRight: 1,
-                color: "white",
-                borderRadius: 1,
-                borderColor: "white",
-                fontFamily: "monospace",
-              }}
-            >
-              <ShareOutlinedIcon
-                fontSize="medium"
-                sx={{ color: "white", borderRadius: 5 }}
-              ></ShareOutlinedIcon>
-            </Button>
-          </RWebShare>
-          <Link to="https://zarfdev.netlify.app/" target="_blank">
-            <Button
+              iconColor="white"
+            ></ShareButton>
+            <TextButton
+              link="https://zarfdev.netlify.app/"
+              btnName="ABOUT ME"
+              color="white"
               variant="outlined"
-              sx={{
-                color: "white",
-                borderRadius: 1,
-                borderColor: "white",
-                fontFamily: "monospace",
-              }}
-            >
-              ABOUT ME
-            </Button>
-          </Link>
+            ></TextButton>
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>
