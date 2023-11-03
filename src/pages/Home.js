@@ -11,12 +11,24 @@ import { WallpaperList } from "../helper/WallpaperList";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../styles/CarouselSlider.css";
 import { Carousel } from "react-responsive-carousel";
+import CatagoryButton from "../components/CatagoryButton";
 
 function Home() {
   const [imageList, setImageList] = useState([]);
   const imageListRef = ref(storage, "images/");
   const [imageListNew, setImageListNew] = useState([]);
   const imageListNewRef = ref(storage, "newImages/");
+
+  const [activeBtn, setActiveBtn] = useState("all");
+  const [catagory, setCatagory] = useState("");
+
+  const handleSetCatagory = (value) => {
+    setCatagory(value);
+  };
+
+  const handleSetActiveBtn = (value) => {
+    setActiveBtn(value);
+  };
 
   /*
   useEffect(() => {
@@ -91,21 +103,60 @@ function Home() {
           })}
         </Carousel>
       </Container>
-      <Container sx={{ textAlign: "center", paddingTop: 4 }}>
-        <Typography
-          variant="text"
-          shadows={20}
-          sx={{
-            fontFamily: "monospace",
-            fontSize: 40,
-            color: "white",
-            boxShadow: 20,
-            borderRadius: 10,
-          }}
+      <Container
+        sx={{
+          textAlign: "center",
+          paddingTop: 4,
+        }}
+      >
+        <Grid container justifyContent="center" alignItems="center">
+          <Typography
+            variant="text"
+            shadows={20}
+            sx={{
+              fontFamily: "monospace",
+              fontSize: 40,
+              color: "white",
+              boxShadow: 20,
+              borderRadius: 10,
+            }}
+          >
+            -transform your space into a{" "}
+            <span style={{ color: "aqua" }}>cozy sanctuary</span>-
+          </Typography>
+        </Grid>
+        <Grid
+          container
+          columnGap={2}
+          justifyContent="center"
+          alignItems="center"
+          paddingTop={4}
         >
-          -transform your space into a{" "}
-          <span style={{ color: "aqua" }}>cozy sanctuary</span>-
-        </Typography>
+          <CatagoryButton
+            btnName="ALL"
+            onClick={() => {
+              handleSetCatagory("all");
+              handleSetActiveBtn("all");
+            }}
+            bgColor={activeBtn === "all" ? "black" : "transparent"}
+          ></CatagoryButton>
+          <CatagoryButton
+            btnName="LIGHT"
+            onClick={() => {
+              handleSetCatagory("light");
+              handleSetActiveBtn("light");
+            }}
+            bgColor={activeBtn === "light" ? "black" : "transparent"}
+          ></CatagoryButton>
+          <CatagoryButton
+            btnName="DARK"
+            onClick={() => {
+              handleSetCatagory("dark");
+              handleSetActiveBtn("dark");
+            }}
+            bgColor={activeBtn === "dark" ? "black" : "transparent"}
+          ></CatagoryButton>
+        </Grid>
       </Container>
       <Container sx={{ paddingTop: 5 }}>
         <Grid
@@ -115,19 +166,35 @@ function Home() {
           columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         >
           {/*iterate here, then return this grid block*/}
-          {imageList.map((imageItem, apiKey) => {
-            return (
-              <Grid>
-                <WallpaperCard
-                  key={apiKey}
-                  image={imageItem.url}
-                  name={imageItem.imageName.split("_")[0]}
-                  res={imageItem.imageName.split("_")[1].slice(0, -4)}
-                  item={imageItem.itemItself}
-                ></WallpaperCard>
-              </Grid>
-            );
-          })}
+          {imageList
+            .filter((filteredItem) => {
+              if (catagory == "all" || catagory == "") {
+                return filteredItem;
+              } else if (
+                catagory == "light" &&
+                !filteredItem.imageName.toLowerCase().includes("dark")
+              ) {
+                return filteredItem;
+              } else if (
+                catagory == "dark" &&
+                filteredItem.imageName.toLowerCase().includes(catagory)
+              ) {
+                return filteredItem;
+              }
+            })
+            .map((imageItem, apiKey) => {
+              return (
+                <Grid>
+                  <WallpaperCard
+                    key={apiKey}
+                    image={imageItem.url}
+                    name={imageItem.imageName.split("_")[0]}
+                    res={imageItem.imageName.split("_")[1].slice(0, -4)}
+                    item={imageItem.itemItself}
+                  ></WallpaperCard>
+                </Grid>
+              );
+            })}
         </Grid>
       </Container>
     </div>
