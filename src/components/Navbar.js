@@ -7,6 +7,7 @@ import {
   Box,
   Menu,
   MenuItem,
+  Paper,
 } from "@mui/material";
 import React from "react";
 import "../styles/GradientBackground.css";
@@ -70,7 +71,10 @@ function Navbar() {
             anchorEl={anchorEl}
             open={open}
             onClose={handleClose}
-            sx={{ borderRadius: 20 }}
+            sx={{
+              mt: "1px",
+              "& .MuiMenu-paper": { bgcolor: "transparent", boxShadow: 0 },
+            }}
           >
             <MenuItem onClick={handleClose}>
               <TextButton

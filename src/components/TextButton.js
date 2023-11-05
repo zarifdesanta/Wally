@@ -13,6 +13,7 @@ function TextButton({ variant, color, btnName, link }) {
           borderColor: "white",
           fontFamily: "monospace",
           boxShadow: 5,
+          bgcolor: "white",
         }}
       >
         {btnName}
