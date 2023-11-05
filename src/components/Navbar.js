@@ -55,7 +55,12 @@ function Navbar() {
               aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
               variant="outlined"
-              sx={{ color: "white", borderRadius: 10, borderColor: "white" }}
+              sx={{
+                color: "white",
+                borderRadius: 10,
+                borderColor: "white",
+                boxShadow: 5,
+              }}
             >
               <MenuIcon></MenuIcon>
             </Button>

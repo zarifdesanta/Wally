@@ -20,6 +20,7 @@ function ShareButton({ marginRight, color, variant, iconColor }) {
           borderRadius: 10,
           borderColor: "white",
           fontFamily: "monospace",
+          boxShadow: 5,
         }}
       >
         <ShareOutlinedIcon
