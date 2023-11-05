@@ -17,7 +17,7 @@ function ShareButton({ marginRight, color, variant, iconColor }) {
         sx={{
           marginRight: { marginRight },
           color: { color },
-          borderRadius: 1,
+          borderRadius: 10,
           borderColor: "white",
           fontFamily: "monospace",
         }}

@@ -9,7 +9,7 @@ function TextButton({ variant, color, btnName, link }) {
         variant={variant}
         sx={{
           color: { color },
-          borderRadius: 1,
+          borderRadius: 10,
           borderColor: "white",
           fontFamily: "monospace",
         }}
