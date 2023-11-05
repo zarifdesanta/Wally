@@ -7,7 +7,6 @@ import {
   Box,
   Menu,
   MenuItem,
-  Paper,
 } from "@mui/material";
 import React from "react";
 import "../styles/GradientBackground.css";
@@ -82,6 +81,7 @@ function Navbar() {
                 btnName="ABOUT ME"
                 color="black"
                 variant="text"
+                bgColor="white"
               ></TextButton>
             </MenuItem>
             <MenuItem onClick={handleClose}>
@@ -89,6 +89,7 @@ function Navbar() {
                 color="black"
                 variant="text"
                 iconColor="black"
+                bgColor="white"
               ></ShareButton>
             </MenuItem>
           </Menu>
@@ -98,12 +99,14 @@ function Navbar() {
               color="white"
               variant="outlined"
               iconColor="white"
+              bgColor="transparent"
             ></ShareButton>
             <TextButton
               link="https://zarfdev.netlify.app/"
               btnName="ABOUT ME"
               color="white"
               variant="outlined"
+              bgColor="transparent"
             ></TextButton>
           </Box>
         </Toolbar>

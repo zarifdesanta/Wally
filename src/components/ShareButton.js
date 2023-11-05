@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import { RWebShare } from "react-web-share";
 
-function ShareButton({ marginRight, color, variant, iconColor }) {
+function ShareButton({ marginRight, color, variant, iconColor, bgColor }) {
   return (
     <RWebShare
       data={{
@@ -21,7 +21,7 @@ function ShareButton({ marginRight, color, variant, iconColor }) {
           borderColor: "white",
           fontFamily: "monospace",
           boxShadow: 5,
-          bgcolor: "white",
+          bgcolor: bgColor,
         }}
       >
         <ShareOutlinedIcon

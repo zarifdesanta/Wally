@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 
-function TextButton({ variant, color, btnName, link }) {
+function TextButton({ variant, color, btnName, link, bgColor }) {
   return (
     <Link to={link} target="_blank">
       <Button
@@ -13,7 +13,7 @@ function TextButton({ variant, color, btnName, link }) {
           borderColor: "white",
           fontFamily: "monospace",
           boxShadow: 5,
-          bgcolor: "white",
+          bgcolor: bgColor,
         }}
       >
         {btnName}
